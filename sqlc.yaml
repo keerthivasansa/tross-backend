@@ -1,0 +1,35 @@
+version: "2"
+sql:
+  - engine: "mysql"
+    queries: "sql/query.sql"
+    schema: "sql/schema.sql"
+    gen:
+      go:
+        package: "database"
+        out: "database"
+        emit_json_tags: true
+        overrides:
+          - db_type: varchar
+            nullable: true
+            go_type: 
+              import: "gopkg.in/guregu/null.v4" 
+              package: "null"
+              type: "String"
+          - db_type: int
+            nullable: true
+            go_type: 
+              import: "gopkg.in/guregu/null.v4" 
+              package: "null"
+              type: "Int"
+          - db_type: datetime
+            nullable: true
+            go_type: 
+              import: "gopkg.in/guregu/null.v4" 
+              package: "null"
+              type: "Time"
+          - db_type: tinyint
+            nullable: true
+            go_type: 
+              import: "gopkg.in/guregu/null.v4" 
+              package: "null"
+              type: "Bool"
